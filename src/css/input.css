@@ -1,1 +1,47 @@
 @import "tailwindcss";
+
+:root {
+    --color-page: #121212;
+    --color-surface-sidebar: #1e1e1e;
+    --color-surface-card: #201f1f;
+    --color-surface-row: #1b1b1b;
+    --color-surface-icon: #363636;
+    --color-border: #353534;
+    --color-text-primary: #ffffff;
+    --color-text-muted: #bac9cc;
+    --color-text-subtle: #98989d;
+    --color-accent-cyan: #00daf3;
+    --color-accent-green: #00f392;
+    --color-accent-red: #e4494c;
+    --color-accent-lime: #dff300;
+    --color-chart-green: #13a978;
+    --color-nav-active: rgba(0, 218, 243, 0.05);
+    --color-overlay: rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-sidebar {
+    transform: translateX(-100%);
+}
+
+#sidebar-toggle:checked ~ main .dashboard-sidebar {
+    transform: translateX(0);
+}
+
+.header-dropdown-overlay,
+[data-notifications-menu],
+[data-user-menu] {
+    display: none;
+}
+
+#dropdown-notifications:checked ~ .header-dropdown-overlay,
+#dropdown-user:checked ~ .header-dropdown-overlay,
+#dropdown-notifications:checked ~ main [data-notifications-menu],
+#dropdown-user:checked ~ main [data-user-menu] {
+    display: block;
+}
+
+@media (min-width: 1024px) {
+    .dashboard-sidebar {
+        transform: translateX(0);
+    }
+}

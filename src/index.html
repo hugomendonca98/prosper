@@ -1,16 +1,272 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@800&family=Manrope:wght@700;800&display=swap"
+        rel="stylesheet">
     <link href="./css/output.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1 class="text-3xl font-bold underline">
-        Hello world!
-    </h1>
+<body class="min-h-screen bg-(--color-page) text-(--color-text-primary) antialiased">
+    <input id="sidebar-toggle" class="peer sr-only" type="checkbox" aria-label="Abrir menu lateral">
+    <input id="dropdown-none" class="sr-only" type="radio" name="header-dropdown" checked>
+    <input id="dropdown-notifications" class="sr-only" type="radio" name="header-dropdown">
+    <input id="dropdown-user" class="sr-only" type="radio" name="header-dropdown">
+    <label for="dropdown-none" class="header-dropdown-overlay fixed inset-0 z-20" aria-hidden="true"></label>
+    <label for="sidebar-toggle" class="fixed inset-0 z-40 hidden bg-(--color-overlay) peer-checked:block lg:hidden"
+        aria-hidden="true"></label>
+
+    <main class="flex min-h-screen w-full bg-(--color-page)">
+        <aside
+            class="dashboard-sidebar fixed inset-y-0 left-0 z-50 block w-[238px] shrink-0 border-r border-(--color-border) bg-(--color-surface-sidebar) px-[13px] py-[18px] transition-transform duration-300 lg:static lg:z-auto">
+            <div class="mb-4 flex items-center justify-between">
+                <h1
+                    class="px-1 font-['JetBrains_Mono'] text-[28px] font-extrabold tracking-wide text-(--color-accent-cyan)">
+                    Prosper
+                </h1>
+                <label for="sidebar-toggle"
+                    class="grid size-[34px] cursor-pointer place-items-center rounded-lg text-(--color-text-muted) lg:hidden"
+                    aria-label="Fechar menu lateral">
+                    <svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </label>
+            </div>
+
+            <nav aria-label="Navegação principal" class="space-y-1">
+                <a href="#"
+                    class="flex items-center gap-2 bg-(--color-nav-active) px-2 py-2 text-base font-semibold tracking-[0.6px] text-(--color-accent-cyan) transition-colors hover:bg-(--color-nav-active) hover:text-(--color-accent-cyan)">
+                    <svg class="size-[16px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z" stroke="currentColor"
+                            stroke-width="2" stroke-linejoin="round" />
+                    </svg>
+                    Início
+                </a>
+                <a href="#"
+                    class="flex items-center gap-2 px-2 py-2 text-base font-semibold tracking-[0.6px] text-(--color-text-muted) transition-colors hover:bg-(--color-nav-active) hover:text-(--color-accent-cyan)">
+                    <svg class="size-[16px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M8 6h11M8 12h11M8 18h11M4 6h.01M4 12h.01M4 18h.01" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    Transações
+                </a>
+                <a href="#"
+                    class="flex items-center gap-2 px-2 py-2 text-base font-semibold tracking-[0.6px] text-(--color-text-muted) transition-colors hover:bg-(--color-nav-active) hover:text-(--color-accent-cyan)">
+                    <svg class="size-[16px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16v12H4V7Zm0 4h16M8 15h3" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Orçamento
+                </a>
+                <a href="#"
+                    class="flex items-center gap-2 px-2 py-2 text-base font-semibold tracking-[0.6px] text-(--color-text-muted) transition-colors hover:bg-(--color-nav-active) hover:text-(--color-accent-cyan)">
+                    <svg class="size-[16px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M3 7h18v10H3V7Zm0 4h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Cartões
+                </a>
+            </nav>
+        </aside>
+
+        <section class="flex-1 px-4 py-[18px] sm:px-5 lg:px-[14px]">
+            <header class="relative z-30 mb-4 flex items-center gap-3">
+                <label for="sidebar-toggle"
+                    class="grid size-[45px] shrink-0 cursor-pointer place-items-center rounded-xl border border-(--color-border) bg-(--color-surface-sidebar) text-(--color-text-muted) lg:hidden"
+                    aria-label="Abrir menu lateral">
+                    <svg class="size-[22px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </label>
+                <label
+                    class="flex h-[55px] min-w-0 flex-1 items-center gap-4 rounded-xl border border-(--color-border) bg-(--color-surface-sidebar) px-4">
+                    <span class="sr-only">Pesquisar movimentações</span>
+                    <svg class="size-[22px] shrink-0 text-(--color-text-subtle)" viewBox="0 0 24 24" fill="none"
+                        aria-hidden="true">
+                        <path d="m21 21-4.35-4.35M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <input
+                        class="w-full bg-transparent text-[12px] font-medium text-(--color-text-muted) outline-none placeholder:text-(--color-text-subtle)"
+                        type="search" placeholder="Pesquisar movimentações...">
+                </label>
+
+                <div class="relative shrink-0">
+                    <label for="dropdown-notifications"
+                        class="grid size-[45px] cursor-pointer list-none place-items-center rounded-full bg-(--color-surface-icon) text-(--color-text-muted) transition-colors hover:text-(--color-accent-cyan) [&::-webkit-details-marker]:hidden"
+                        aria-label="Abrir notificações">
+                        <span class="relative">
+                            <svg class="size-[22px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM13.73 21a2 2 0 0 1-3.46 0"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span class="absolute right-0 top-0 size-2 rounded-full bg-(--color-accent-red)"></span>
+                        </span>
+                    </label>
+                    <div class="absolute right-0 top-[calc(100%+12px)] z-30 w-[280px] max-w-[calc(100vw-2rem)] rounded-xl border border-(--color-border) bg-(--color-surface-card) p-4 shadow-2xl"
+                        data-notifications-menu>
+                        <div class="mb-3 flex items-center justify-between">
+                            <p class="text-sm font-bold text-(--color-text-primary)">Notificações</p>
+                            <span class="text-xs font-semibold text-(--color-accent-cyan)">3 novas</span>
+                        </div>
+                        <div class="space-y-3">
+                            <article class="rounded-lg bg-(--color-surface-row) p-3">
+                                <p class="text-xs font-semibold text-(--color-text-primary)">Pagamento confirmado</p>
+                                <p class="mt-1 text-xs text-(--color-text-subtle)">Fatura do cartão paga hoje.</p>
+                            </article>
+                            <article class="rounded-lg bg-(--color-surface-row) p-3">
+                                <p class="text-xs font-semibold text-(--color-text-primary)">Novo lançamento</p>
+                                <p class="mt-1 text-xs text-(--color-text-subtle)">Supermercado xyz: -R$ 500,00.</p>
+                            </article>
+                            <article class="rounded-lg bg-(--color-surface-row) p-3">
+                                <p class="text-xs font-semibold text-(--color-text-primary)">Meta de economia</p>
+                                <p class="mt-1 text-xs text-(--color-text-subtle)">Você atingiu 82% da meta mensal.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative shrink-0">
+                    <label for="dropdown-user"
+                        class="grid size-[45px] cursor-pointer list-none place-items-center rounded-full bg-(--color-surface-icon) text-(--color-text-muted) transition-colors hover:text-(--color-accent-cyan) [&::-webkit-details-marker]:hidden"
+                        aria-label="Abrir informações do usuário">
+                        <svg class="size-[22px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </label>
+                    <div class="absolute right-0 top-[calc(100%+12px)] z-30 w-[260px] max-w-[calc(100vw-2rem)] rounded-xl border border-(--color-border) bg-(--color-surface-card) p-4 shadow-2xl"
+                        data-user-menu>
+                        <div class="flex items-center gap-3 border-b border-(--color-border) pb-3">
+                            <div
+                                class="grid size-11 place-items-center rounded-full bg-(--color-surface-icon) font-bold text-(--color-accent-cyan)">
+                                HM
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-(--color-text-primary)">Hugo Mendonça</p>
+                                <p class="text-xs text-(--color-text-subtle)">hugo@mendonca.com</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 space-y-2 text-sm font-semibold text-(--color-text-muted)">
+                            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-(--color-surface-row)">Minha
+                                conta</a>
+                            <a href="#"
+                                class="block rounded-lg px-3 py-2 hover:bg-(--color-surface-row)">Configurações</a>
+                            <a href="#"
+                                class="block rounded-lg px-3 py-2 text-(--color-accent-red) hover:bg-(--color-surface-row)">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="space-y-4">
+                <article
+                    class="relative overflow-hidden rounded-xl border border-(--color-border) bg-(--color-surface-card) px-4 py-4 lg:h-[128px]">
+                    <p class="text-sm font-semibold uppercase tracking-[0.6px] text-(--color-text-muted)">Saldo atual
+                    </p>
+                    <p class="mt-1 font-['Manrope'] text-3xl font-extrabold leading-tight text-(--color-accent-green)">
+                        R$ 24.500,00
+                    </p>
+                    <p class="mt-1 text-lg font-semibold tracking-[0.6px] text-(--color-text-muted)">
+                        +12.5% vs último mês
+                    </p>
+                    <svg class="absolute right-4 top-2 hidden size-[115px] text-(--color-chart-green) sm:block"
+                        viewBox="0 0 180 180" fill="none" aria-hidden="true">
+                        <path d="M35 126 74 87l31 31 43-53" stroke="currentColor" stroke-width="14"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M48 141V119M80 141V108M112 141V116M144 141V83" stroke="currentColor" stroke-width="14"
+                            stroke-linecap="round" />
+                    </svg>
+                </article>
+
+                <div class="grid gap-4 xl:grid-cols-2">
+                    <article
+                        class="rounded-xl border border-(--color-border) bg-(--color-surface-card) px-4 py-4 lg:h-[128px]">
+                        <p class="text-sm font-semibold uppercase tracking-[0.6px] text-(--color-text-muted)">Entradas
+                        </p>
+                        <p class="mt-1 font-['Manrope'] text-3xl font-bold leading-[38px] text-(--color-accent-green)">
+                            R$ 54.500,00
+                        </p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <svg class="size-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-trending-up-icon lucide-trending-up">
+                                <path d="M16 7h6v6" />
+                                <path d="m22 7-8.5 8.5-5-5L2 17" />
+                            </svg>
+                            <p class="text-sm font-semibold tracking-[0.6px] text-(--color-text-muted)">
+                                +5.5% vs último mês
+                            </p>
+                        </div>
+
+                    </article>
+                    <article
+                        class="rounded-xl border border-(--color-border) bg-(--color-surface-card) px-4 py-4 lg:h-[128px]">
+                        <p class="text-sm font-semibold uppercase tracking-[0.6px] text-(--color-text-muted)">Saídas</p>
+                        <p class="mt-1 font-['Manrope'] text-3xl font-bold leading-[38px] text-(--color-accent-red)">
+                            R$ 54.500,00
+                        </p>
+                        <div class="flex items-center gap-2 mt-1">
+                            <svg class="size-[24px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-trending-down-icon lucide-trending-down">
+                                <path d="M16 17h6v-6" />
+                                <path d="m22 17-8.5-8.5-5 5L2 7" />
+                            </svg>
+                            <p class="text-sm font-semibold tracking-[0.6px] text-(--color-text-muted)">
+                                +1.5% vs último mês
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <section
+                    class="rounded-xl border border-(--color-border) bg-(--color-surface-card) px-4 py-5 lg:min-h-[360px]">
+                    <h2 class="mb-6 text-sm font-semibold uppercase tracking-[0.6px] text-(--color-text-subtle)">
+                        Registro de movimentações
+                    </h2>
+
+                    <div class="space-y-3">
+                        <article
+                            class="grid gap-2 rounded-xl bg-(--color-surface-row) px-4 py-3 text-sm font-semibold tracking-[0.6px] sm:grid-cols-[90px_90px_1fr_auto] sm:items-center">
+                            <time class="text-(--color-text-subtle)" datetime="2026-04-16">16/04/2026</time>
+                            <p class="text-(--color-accent-cyan)">Alimentação</p>
+                            <p>Supermercado xyz</p>
+                            <p class="text-(--color-accent-red)">-R$ 500,00</p>
+                        </article>
+                        <article
+                            class="grid gap-2 rounded-xl bg-(--color-surface-row) px-4 py-3 text-sm font-semibold tracking-[0.6px] sm:grid-cols-[90px_90px_1fr_auto] sm:items-center">
+                            <time class="text-(--color-text-subtle)" datetime="2026-04-16">16/04/2026</time>
+                            <p class="text-(--color-accent-green)">Salário</p>
+                            <p>Empresa xyz</p>
+                            <p class="text-(--color-accent-green)">+R$ 6.500,00</p>
+                        </article>
+                        <article
+                            class="grid gap-2 rounded-xl bg-(--color-surface-row) px-4 py-3 text-sm font-semibold tracking-[0.6px] sm:grid-cols-[90px_90px_1fr_auto] sm:items-center">
+                            <time class="text-(--color-text-subtle)" datetime="2026-04-16">16/04/2026</time>
+                            <p class="text-(--color-accent-lime)">Serviços</p>
+                            <p>Conta de energia</p>
+                            <p class="text-(--color-accent-red)">-R$ 200,00</p>
+                        </article>
+                        <article
+                            class="grid gap-2 rounded-xl bg-(--color-surface-row) px-4 py-3 text-sm font-semibold tracking-[0.6px] sm:grid-cols-[90px_90px_1fr_auto] sm:items-center">
+                            <time class="text-(--color-text-subtle)" datetime="2026-04-16">16/04/2026</time>
+                            <p class="text-(--color-accent-cyan)">Alimentação</p>
+                            <p>Supermercado xyz</p>
+                            <p class="text-(--color-accent-red)">-R$ 500,00</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
